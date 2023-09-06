@@ -2,10 +2,81 @@
 //
 
 #include <iostream>
+using namespace std;
 
+class Numbers {
+private:
+	double first_number;
+	double second_number;
+	double rez;
+public:
+	void Init()
+	{
+		cin >> first_number;
+		cin >> second_number;
+	}
+	void change(int a, int b)
+	{
+		first_number = a;
+		second_number = b;
+	}
+	Numbers sum()
+	{
+		Numbers rez;
+		rez.rez = first_number + second_number;
+		return rez;
+	}
+	Numbers MAX()
+	{
+		Numbers rez;
+		if (first_number > second_number)
+		{
+			rez.rez = first_number;
+		}
+		else if (first_number < second_number)
+		{
+			rez.rez = second_number;
+		}
+		return rez;
+	}
+	void Print()
+	{
+		cout << "\n";
+		cout << rez << endl;
+	}
+};
 int main()
 {
-    std::cout << "Hello World!\n";
+	int first, second;
+	first = rand() % 10;
+	second = rand() % 20;
+	Numbers a;
+	a.Init();
+	cout << "Do you want to change your numbers? - 1: ";
+	int change, newA, newB;
+	cin >> change;
+	if (change == 1)
+	{
+		cin >> newA;
+		cin >> newB;
+		a.change(newA, newB);
+	}
+	int choise;
+	cout << "What do you want? 1 - sum; 2 - max ";
+	cin >> choise;
+	switch (choise)
+	{
+	case 1:
+		Numbers rez;
+		rez = a.sum();
+		rez.Print();
+		break;
+	case 2:
+		Numbers rezMAX;
+		rezMAX = a.MAX();
+		rezMAX.Print();
+		break;
+	}
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
